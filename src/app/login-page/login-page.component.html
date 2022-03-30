@@ -1,16 +1,42 @@
-<div class="card">
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()">
   <div class="card-content">
-    <span class="card-title">Войти в систему</span>
+    <span class="card-title">Welcome on Newborn</span>
     <div class="input-field">
-      <input id="email" type="email" required>
+      <input formControlName="email"
+             id="email"
+             type="email"
+             [ngClass]="{'invalid': form.controls['email'].invalid && form.controls['email'].touched}"
+             required
+      >
       <label for="email">Email:</label>
+      <span class="helper-text red-text" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+        <span *ngIf="form.controls['email'].errors?.['required']"> Email should not be empty</span>
+        <span *ngIf="form.controls['email'].errors?.['email']"> Invalid email </span>
+      </span>
     </div>
     <div class="input-field">
-      <input id="password" type="password" required>
-      <label for="password">Пароль:</label>
+      <input formControlName="password"
+             id="password"
+             type="password"
+             [ngClass]="{'invalid': form.controls['password'].invalid && form.controls['password'].touched}"
+             required
+      >
+      <label for="password">Password:</label>
+      <span class="helper-text red-text" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+        <span *ngIf="form.controls['password'].errors?.['required']"> Password should not be empty</span>
+        <span *ngIf="form.controls['password'].errors?.['minlength'] && form.controls['password'].errors?.['minlength']['requiredLength']"> Password mast have {{form.controls['password'].errors?.['minlength']['requiredLength']}} elements </span>
+      </span>
     </div>
   </div>
   <div class="card-action">
-    <button class="modal-action btn waves-effect">Войти</button>
+    <button
+      type="submit"
+      class="modal-action btn waves-effect"
+      [disabled]="form.invalid"
+    >Login
+    </button>
   </div>
-</div>
+</form>

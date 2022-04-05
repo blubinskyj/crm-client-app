@@ -1,6 +1,7 @@
 export interface User {
-  email: string,
+  _id?: string
   password: string
+  email: string
 }
 
 export interface Category {

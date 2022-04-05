@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from "../shared/services/categories.service";
 import {Category} from "../shared/interfaces";
-import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-categories-page',
@@ -18,7 +18,7 @@ export class CategoriesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
-    //TODO fix it
+    //TODO fix ts-ignore
     this.categoriesService.fetch().subscribe(categories => {
 
       // @ts-ignore

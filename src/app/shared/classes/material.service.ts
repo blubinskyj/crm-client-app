@@ -2,7 +2,9 @@ import {ElementRef} from "@angular/core";
 
 declare var M: {
   FloatingActionButton: any;
-  toast: (arg0: { html: string }) => void }
+  toast: (arg0: { html: string }) => void
+  updateTextFields(): void;
+}
 
 export class MaterialService{
   static toast(message: string){
@@ -11,6 +13,10 @@ export class MaterialService{
 
   static initializeFloatingButton(ref: ElementRef){
     M.FloatingActionButton.init(ref.nativeElement)
+  }
+
+  static updateTextInputs(){
+    M.updateTextFields();
   }
 }
 

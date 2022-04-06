@@ -24,7 +24,6 @@ export class CategoriesPageComponent implements OnInit {
       // @ts-ignore
       this.categories = categories["categories"] as Category[]
       this.loading = false
-      console.log(categories)
     })
   }
 
